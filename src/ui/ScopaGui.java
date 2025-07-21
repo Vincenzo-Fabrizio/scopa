@@ -32,7 +32,7 @@ public class ScopaGui extends JFrame {
     private final Opponent opponent = new Opponent();
 
     public ScopaGui() {
-        setTitle("Scopa - Tavolo da Gioco");
+        setTitle("ꜱᴄᴏᴘᴀ");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
@@ -48,11 +48,11 @@ public class ScopaGui extends JFrame {
     private void initComponents() {
         setLayout(new BorderLayout(5, 5));
 
-        pannelloGiocatore = createHandPanel("Tua mano");
-        pannelloAvversario = createHandPanel("Mano avversario");
+        pannelloGiocatore = createHandPanel("ɢɪᴏᴄᴀᴛᴏʀᴇ");
+        pannelloAvversario = createHandPanel("ᴀᴠᴠᴇʀꜱᴀʀɪᴏ ᴀɪ");
         pannelloTavolo = new JPanel(new GridLayout(2, 5, 5, 5));
         pannelloTavolo.setBackground(new Color(0, 100, 0));
-        pannelloTavolo.setBorder(BorderFactory.createTitledBorder("Carte sul tavolo"));
+        pannelloTavolo.setBorder(BorderFactory.createTitledBorder("ᴛᴀᴠᴏʟᴏ"));
 
         JPanel pannelloCarte = new JPanel(new BorderLayout(5, 5));
         pannelloCarte.add(pannelloAvversario, BorderLayout.NORTH);
