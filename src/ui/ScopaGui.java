@@ -179,17 +179,12 @@ public class ScopaGui extends JFrame {
     }
 
     private void giocaAvversario() {
-        boolean presa = opponent.giocaMossa(
-            new ArrayList<>(carteAvversario),
-            new ArrayList<>(tavolo),
-            new ArrayList<>(opponent.getCartePrese()),
-            player
-        );
-
-        if (!presa && !carteAvversario.isEmpty()) {
-            Card scarta = carteAvversario.remove(0);
-            tavolo.add(scarta);
-            log("🤖 Avversario scarta: " + scarta);
+        if (!carteAvversario.isEmpty()) {
+            Card mossa = opponent.playTurn(new ArrayList<>(tavolo), new ArrayList<>(carteGiocatore));
+            carteAvversario.clear();
+            carteAvversario.addAll(opponent.getMano());
+            tavolo.add(mossa);
+            log("🤖 Avversario gioca: " + mossa);
         }
 
         updateManoAvversario();
@@ -203,8 +198,10 @@ public class ScopaGui extends JFrame {
 
         for (int i = 0; i < 3 && !mazzo.isEmpty(); i++) {
             carteGiocatore.add(mazzo.remove(0));
-            carteAvversario.add(mazzo.remove(0));
+            opponent.getMano().add(mazzo.remove(0));
         }
+
+        carteAvversario.addAll(opponent.getMano());
 
         updateManoGiocatore();
         updateManoAvversario();
